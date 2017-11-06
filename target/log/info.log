@@ -1,0 +1,31 @@
+2017-10-18 11:52:16.057 [main] INFO  com.cjj.Application -Starting Application v0.0.1-SNAPSHOT on caojunjie-430 with PID 9220 (E:\project\java\newworkspace\springbootDemo\target\springbootDemo-0.0.1-SNAPSHOT.jar started by hp in E:\project\java\newworkspace\springbootDemo\target)
+2017-10-18 11:52:16.074 [main] DEBUG com.cjj.Application -Running with Spring Boot v1.4.0.RELEASE, Spring v4.3.2.RELEASE
+2017-10-18 11:52:16.085 [main] INFO  com.cjj.Application -No active profile set, falling back to default profiles: default
+2017-10-18 11:52:16.284 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext -Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@47bd871c: startup date [Wed Oct 18 11:52:16 CST 2017]; root of context hierarchy
+2017-10-18 11:52:18.831 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker -Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [class org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$a72237b4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-10-18 11:52:20.035 [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer -Tomcat initialized with port(s): 8080 (http)
+2017-10-18 11:52:20.074 [main] INFO  o.a.catalina.core.StandardService -Starting service Tomcat
+2017-10-18 11:52:20.082 [main] INFO  o.a.catalina.core.StandardEngine -Starting Servlet Engine: Apache Tomcat/8.5.4
+2017-10-18 11:52:20.261 [localhost-startStop-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -Initializing Spring embedded WebApplicationContext
+2017-10-18 11:52:20.299 [localhost-startStop-1] INFO  o.s.web.context.ContextLoader -Root WebApplicationContext: initialization completed in 4015 ms
+2017-10-18 11:52:20.637 [localhost-startStop-1] INFO  o.s.b.w.s.ServletRegistrationBean -Mapping servlet: 'dispatcherServlet' to [/]
+2017-10-18 11:52:20.664 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean -Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-10-18 11:52:21.813 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping -Mapped "{[/initTestError]}" onto public com.cjj.model.UserEntity com.cjj.controller.TestController.init(com.cjj.model.UserEntity)
+2017-10-18 11:52:21.827 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping -Mapped "{[/init]}" onto public com.cjj.message.InitResMessage com.cjj.controller.TestController.init(com.cjj.message.InitReqMessage)
+2017-10-18 11:52:21.834 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping -Mapped "{[/user]}" onto public java.lang.String com.cjj.controller.TestController.dbTest()
+2017-10-18 11:52:21.843 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping -Mapped "{[/page]}" onto public java.lang.String com.cjj.controller.TestController.pageTest()
+2017-10-18 11:52:21.850 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping -Mapped "{[/sex]}" onto public java.lang.String com.cjj.controller.TestController.pageSexTest()
+2017-10-18 11:52:21.873 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping -Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-10-18 11:52:21.882 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping -Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-10-18 11:52:22.090 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter -Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@47bd871c: startup date [Wed Oct 18 11:52:16 CST 2017]; root of context hierarchy
+2017-10-18 11:52:22.113 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter -Detected @ModelAttribute methods in myControllerAdvice
+2017-10-18 11:52:22.117 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter -Detected @InitBinder methods in myControllerAdvice
+2017-10-18 11:52:22.249 [main] INFO  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver -Detected @ExceptionHandler methods in myControllerAdvice
+2017-10-18 11:52:23.285 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter -Registering beans for JMX exposure on startup
+2017-10-18 11:52:23.299 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter -Bean with name 'dataSource' has been autodetected for JMX exposure
+2017-10-18 11:52:23.315 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter -Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2017-10-18 11:52:23.502 [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer -Tomcat started on port(s): 8080 (http)
+2017-10-18 11:52:23.517 [main] INFO  com.cjj.Application -Started Application in 8.874 seconds (JVM running for 10.52)
+2017-10-18 11:53:39.923 [Thread-2] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext -Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@47bd871c: startup date [Wed Oct 18 11:52:16 CST 2017]; root of context hierarchy
+2017-10-18 11:53:39.926 [Thread-2] INFO  o.s.j.e.a.AnnotationMBeanExporter -Unregistering JMX-exposed beans on shutdown
+2017-10-18 11:53:39.927 [Thread-2] INFO  o.s.j.e.a.AnnotationMBeanExporter -Unregistering JMX-exposed beans

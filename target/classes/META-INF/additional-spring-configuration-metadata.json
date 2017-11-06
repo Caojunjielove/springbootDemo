@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "init.netspeed",
+    "type": "java.lang.String",
+    "description": "A description for 'init.netspeed'"
+  },
+  {
+    "name": "init.maxcardbalance",
+    "type": "java.lang.String",
+    "description": "A description for 'init.maxcardbalance'"
+  }
+]}
