@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSON;
 import com.cjj.exception.MyException;
-import com.cjj.http.service.HttpService;
+import com.cjj.httpservice.HttpService;
 import com.cjj.message.InitReqMessage;
 import com.cjj.message.InitResMessage;
 import com.cjj.message.base.BaseMessage;
