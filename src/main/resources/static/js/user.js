@@ -113,6 +113,10 @@ var ButtonInit = function () {
     	$('#btn_query').click(function(){
     		$('#tb_users').bootstrapTable('refresh','testPage');
     	});
+    	//初始化页面上面的按钮事件
+    	$('#btn_add').click(function(){
+    		
+    	});
     };
     return oInit;
 };

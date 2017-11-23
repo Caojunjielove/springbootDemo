@@ -19,6 +19,10 @@ public class UserService {
 		return userDao.searchAll();
 	}
 	
+	public void insertUser(UserEntity user){
+		userDao.insert(user);
+	}
+	
 	public List<UserEntity> findAllByPage(int pageNo, int pageSize){
 		PageHelper.startPage(pageNo, pageSize);
 		return userDao.searchAll();

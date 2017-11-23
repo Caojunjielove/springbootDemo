@@ -1,15 +1,16 @@
-server:
-  port: 8081
 spring:
+  profiles:
+    active: test
+    
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/test?useSSL=true&useUnicode=true&characterEncoding=UTF-8
-    username: root
-    password: 123456
-    hikari:
-      maxLifetime: 1765000 #一个连接的生命时长（毫秒），超时而且没被使用则被释放（retired），缺省:30分钟，建议设置比数据库超时时长少30秒以上
-      maximumPoolSize: 15 #连接池中允许的最大连接数。缺省值：10；推荐的公式：((core_count * 2) + effective_spindle_count)
+#    url: jdbc:mysql://127.0.0.1:3306/test?useSSL=true&useUnicode=true&characterEncoding=UTF-8
+#    username: root
+#    password: 123456
+#    hikari:
+#      maxLifetime: 1765000 #一个连接的生命时长（毫秒），超时而且没被使用则被释放（retired），缺省:30分钟，建议设置比数据库超时时长少30秒以上
+#      maximumPoolSize: 15 #连接池中允许的最大连接数。缺省值：10；推荐的公式：((core_count * 2) + effective_spindle_count)
   cloud:
     feign:
       httpclient:
@@ -27,8 +28,8 @@ mybatis:
   mapperLocations: classpath:mapper/*.xml
   
 logging:
-  config: classpath:logback-spring.xml
   path: log/
+  config: classpath:logback-spring.xml
   
 init:
   netspeed: 100

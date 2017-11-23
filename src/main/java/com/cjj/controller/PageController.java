@@ -1,5 +1,6 @@
 package com.cjj.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -7,6 +8,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +31,8 @@ public class PageController {
 	public String dbTest(Model model){
 //		List<UserEntity> list = userService.seacherAll();
 //		model.addAttribute("users", list);
-		return "index";
+//		return "index";
+		return "user";
 	}
 
 	@RequestMapping("/userList/{pageindex}")
@@ -37,7 +40,8 @@ public class PageController {
 		List<UserEntity> list = userService.findAllByPage(pageindex, 1);
 		PageInfo<UserEntity> pageInfo = new PageInfo<UserEntity>(list);
 		model.addAttribute("pageInfo", pageInfo);
-		return "index";
+//		return "index";
+		return "user";
 	}
 	@ResponseBody
 	@RequestMapping("/testPage")
@@ -46,5 +50,15 @@ public class PageController {
 		List<UserEntity> list = userService.findByName(pageNum, pageSize, nicheng);
 		PageInfo<UserEntity> pageInfo = new PageInfo<UserEntity>(list);
 		return pageInfo;
+	}
+
+	@ResponseBody
+	@RequestMapping("/addUser")
+	public UserEntity addUser(@RequestBody UserEntity user){
+		Date now = new Date();
+		user.setCreateTime(now);
+		user.setUpdtime(now);
+		userService.insertUser(user);
+		return user;
 	}
 }
