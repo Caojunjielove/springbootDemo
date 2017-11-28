@@ -7,11 +7,19 @@
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>500MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
-            <maxHistory>2</maxHistory>
         </rollingPolicy>
         <layout class="ch.qos.logback.classic.PatternLayout">
             <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} -%msg%n
             </Pattern>
+        </layout>
+    </appender>
+    <appender name="MPSP_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${LOG_PATH}/mpsp.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/mpsp-%d{yyyyMMdd}.log</fileNamePattern>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyyMMddHHmmss.SSS},%m%n</Pattern>
         </layout>
     </appender>
 
@@ -39,5 +47,8 @@
     </root>
     <logger name="com.cjj">
     	<level value="debug"/>
+    </logger>    
+    <logger name="MPSP">
+        <appender-ref ref="MPSP_FILE" />
     </logger>    
 </configuration>

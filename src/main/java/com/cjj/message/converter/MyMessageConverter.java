@@ -16,6 +16,8 @@ import org.springframework.util.StreamUtils;
 import com.alibaba.fastjson.JSON;
 import com.cjj.exception.MyException;
 import com.cjj.message.base.BaseMessage;
+import com.cjj.message.base.BaseResMessage;
+import com.cjj.util.MpspLog;
 
 
 public class MyMessageConverter extends AbstractHttpMessageConverter<BaseMessage> {
@@ -52,6 +54,8 @@ public class MyMessageConverter extends AbstractHttpMessageConverter<BaseMessage
 			}
 			baseMsg.setSignFlag(true);
 		}
+		baseMsg.setRpid(System.currentTimeMillis() + "");
+		baseMsg.setStartTime(System.currentTimeMillis());
 		return baseMsg;
 	}
 
@@ -69,6 +73,10 @@ public class MyMessageConverter extends AbstractHttpMessageConverter<BaseMessage
 		log.debug("返回响应报文：" + jsonMsg);
 		if(baseMessage.isSignFlag()){
 			//对jsonMsg加密处理
+		}
+		log.info("耗时:" + (System.currentTimeMillis()-baseMessage.getStartTime()));
+		if(baseMessage instanceof BaseResMessage){
+			MpspLog.logMPSP((BaseResMessage) baseMessage, System.currentTimeMillis() - baseMessage.getStartTime());
 		}
 		outputMessage.getBody().write(jsonMsg.getBytes(CHARSET));
 	}	

@@ -16,6 +16,7 @@ public class MyInterceptor extends HandlerInterceptorAdapter{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		// TODO Auto-generated method stub
+		log.info("--------------业务处理开始-----------------");
 		long startTime = System.currentTimeMillis();
 		request.setAttribute("startTime", startTime);
 		return super.preHandle(request, response, handler);
@@ -29,6 +30,7 @@ public class MyInterceptor extends HandlerInterceptorAdapter{
 		request.removeAttribute("startTime");
 		long endTime = System.currentTimeMillis();
 		log.info("本次处理时间:" + (endTime-starTime) + "ms");
+		log.info("--------------业务处理结束-----------------");
 		super.postHandle(request, response, handler, modelAndView);
 	}
 

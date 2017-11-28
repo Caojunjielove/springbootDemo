@@ -1,0 +1,34 @@
+<assembly>
+    <id>bin</id>
+    <includeBaseDirectory>true</includeBaseDirectory>
+    <!-- 最终打包成一个用于发布的zip文件 -->
+    <formats>
+        <format>zip</format>
+    </formats>
+    <fileSets>
+        <!-- 把项目相关启动脚本，打包进zip文件的根目录 -->
+        <fileSet>
+            <directory>${project.basedir}/bin</directory>
+            <outputDirectory>/bin</outputDirectory>
+        </fileSet>
+
+        <!-- 把项目的配置文件，打包进zip文件的config目录 -->
+        <fileSet>
+            <directory>${project.build.directory}/classes/</directory>
+            <outputDirectory>/config</outputDirectory>
+            <includes>
+                <include>*.xml</include>
+                <include>*.properties</include>
+                <include>*.yml</include>
+            </includes>
+        </fileSet>
+        <!-- 把项目自己编译出来的jar文件，打包进zip文件的根目录 -->
+        <fileSet>
+            <directory>${project.build.directory}</directory>
+            <outputDirectory>bin/</outputDirectory>
+            <includes>
+                <include>*.jar</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+</assembly>

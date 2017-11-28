@@ -13,6 +13,8 @@ public class BaseResMessage extends BaseMessage {
 		this.setReqDate(baseReqMessage.getReqDate());
 		this.setReqTime(baseReqMessage.getReqTime());
 		this.setSignFlag(baseReqMessage.isSignFlag());
+		this.setStartTime(baseReqMessage.getStartTime());
+		this.setRpid(baseReqMessage.getRpid());
 	}
 	
 	public String getRetCode() {
