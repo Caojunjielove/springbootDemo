@@ -5,8 +5,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+import com.cjj.message.base.BaseResMessage;
+import com.cjj.util.MpspLog;
 
 public class MyInterceptor extends HandlerInterceptorAdapter{
 
@@ -21,17 +23,19 @@ public class MyInterceptor extends HandlerInterceptorAdapter{
 		request.setAttribute("startTime", startTime);
 		return super.preHandle(request, response, handler);
 	}
-
+	
 	@Override
-	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-			ModelAndView modelAndView) throws Exception {
-		// TODO Auto-generated method stub
+	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
+			throws Exception {
 		long starTime = (long) request.getAttribute("startTime");
 		request.removeAttribute("startTime");
 		long endTime = System.currentTimeMillis();
-		log.info("本次处理时间:" + (endTime-starTime) + "ms");
-		log.info("--------------业务处理结束-----------------");
-		super.postHandle(request, response, handler, modelAndView);
+		Object baseMessage = request.getAttribute("resData");
+		if(baseMessage instanceof BaseResMessage){
+			MpspLog.logMPSP((BaseResMessage) baseMessage, System.currentTimeMillis() - starTime);
+		}
+		log.info("--------------业务处理结束-----------------处理时间：" + (endTime-starTime) + "ms");
+		super.afterCompletion(request, response, handler, ex);
 	}
 
 }

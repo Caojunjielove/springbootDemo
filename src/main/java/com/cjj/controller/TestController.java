@@ -31,12 +31,9 @@ public class TestController {
 	@Autowired
     private Environment env;
 	
-	@RequestMapping(value="/YYCSHValid",produces="text/plain") 
-	public BaseMessage init(@Valid @RequestBody InitReqMessage reqMsg,BindingResult bindingResult){
+	@RequestMapping(value="/YYCSHValid1",produces="text/plain") 
+	public BaseMessage init1(@Valid @RequestBody InitReqMessage reqMsg){
 		log.debug("接收信息：" + reqMsg);
-		if(bindingResult.hasErrors()){
-			throw new MyException(reqMsg,"9999",bindingResult.getFieldError().getDefaultMessage());
-		}
 		InitResMessage resMsg = new InitResMessage(reqMsg);
 		String netspeed = env.getProperty("init.netspeed");
 		String maxcardbalance = env.getProperty("init.maxcardbalance");
@@ -48,7 +45,7 @@ public class TestController {
 	}
 	
 	@RequestMapping(value="/YYCSH") 
-	public BaseMessage init(@RequestBody InitReqMessage reqMsg){
+	public BaseMessage init(@Valid @RequestBody InitReqMessage reqMsg){
 		log.debug("接收信息：" + reqMsg);
 		InitResMessage resMsg = new InitResMessage(reqMsg);
 		String netspeed = env.getProperty("init.netspeed");
@@ -73,20 +70,8 @@ public class TestController {
 	}
 	
 	@RequestMapping(value="/YYCSHDB",produces="text/plain") 
-	public InitResMessage initDB(@RequestBody InitReqMessage reqMsg){
+	public InitResMessage initDB(@Valid @RequestBody InitReqMessage reqMsg){
 		log.debug("接收信息：" + reqMsg);
-		InitResMessage resMsg = new InitResMessage(reqMsg);
-		List<UserEntity> list = userService.seacherAll();
-		resMsg.setRetCode("0000");
-		resMsg.setRetMsg("success");
-		return resMsg;
-	}
-	@RequestMapping(value="/YYCSHDBValid",produces="text/plain") 
-	public InitResMessage initDB(@Valid @RequestBody InitReqMessage reqMsg,BindingResult bindingResult){
-		log.debug("接收信息：" + reqMsg);
-		if(bindingResult.hasErrors()){
-			throw new MyException(reqMsg,"9999",bindingResult.getFieldError().getDefaultMessage());
-		}
 		InitResMessage resMsg = new InitResMessage(reqMsg);
 		List<UserEntity> list = userService.seacherAll();
 		resMsg.setRetCode("0000");

@@ -14,11 +14,18 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import com.cjj.aop.MyInterceptor;
+import com.cjj.aop.handler.MyMessageConverter;
+import com.cjj.config.factory.ResponseBodyWrapFactoryBean;
 import com.cjj.filter.MyFilter;
-import com.cjj.message.converter.MyMessageConverter;
 @Configuration
 @EnableWebMvc
 public class MyMvcConfig extends WebMvcConfigurerAdapter{
+	
+//	@Override
+//	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+//		// TODO Auto-generated method stub
+//		converters.add(converter());
+//	}
 	@Override
     public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
 //		converters.clear();
@@ -62,6 +69,11 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter{
     @Bean
     public Filter myFilter() {
         return new MyFilter();
+    }
+    
+	@Bean
+    public ResponseBodyWrapFactoryBean getResponseBodyWrap() {
+        return  new ResponseBodyWrapFactoryBean();
     }
 
 }

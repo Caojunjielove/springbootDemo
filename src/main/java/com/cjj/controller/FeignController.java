@@ -30,11 +30,8 @@ public class FeignController {
 	private HttpService httpService;
 	
 	@RequestMapping(value="/feign",produces="text/plain") 
-	public BaseMessage init(@Valid @RequestBody InitReqMessage reqMsg,BindingResult bindingResult){
+	public BaseMessage init(@Valid @RequestBody InitReqMessage reqMsg){
 		log.debug("接收信息：" + reqMsg);
-		if(bindingResult.hasErrors()){
-			throw new MyException(reqMsg,"9999",bindingResult.getFieldError().getDefaultMessage());
-		}
 		String resStr = httpService.query(JSON.toJSONString(reqMsg));
 		log.info("响应信息：" + resStr);
 		

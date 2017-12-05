@@ -8,7 +8,6 @@ public class MyException extends RuntimeException {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private BaseReqMessage baseReqMessage;
 	private String code;
 	private String msg;
 	
@@ -17,10 +16,8 @@ public class MyException extends RuntimeException {
 		this.msg = msg;
 	}
 	
-	public MyException(BaseReqMessage baseReqMessage,String code, String msg) {
-		this.baseReqMessage = baseReqMessage;
+	public MyException(String code) {
 		this.code = code;
-		this.msg = msg;
 	}
 
 
@@ -38,13 +35,5 @@ public class MyException extends RuntimeException {
 
 	public void setMsg(String msg) {
 		this.msg = msg;
-	}
-
-	public BaseReqMessage getBaseReqMessage() {
-		return baseReqMessage;
-	}
-
-	public void setBaseReqMessage(BaseReqMessage baseReqMessage) {
-		this.baseReqMessage = baseReqMessage;
 	}
 }

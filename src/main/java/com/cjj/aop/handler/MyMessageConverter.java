@@ -1,4 +1,4 @@
-package com.cjj.message.converter;
+package com.cjj.aop.handler;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -73,10 +73,6 @@ public class MyMessageConverter extends AbstractHttpMessageConverter<BaseMessage
 		log.debug("返回响应报文：" + jsonMsg);
 		if(baseMessage.isSignFlag()){
 			//对jsonMsg加密处理
-		}
-		log.info("耗时:" + (System.currentTimeMillis()-baseMessage.getStartTime()));
-		if(baseMessage instanceof BaseResMessage){
-			MpspLog.logMPSP((BaseResMessage) baseMessage, System.currentTimeMillis() - baseMessage.getStartTime());
 		}
 		outputMessage.getBody().write(jsonMsg.getBytes(CHARSET));
 	}	
