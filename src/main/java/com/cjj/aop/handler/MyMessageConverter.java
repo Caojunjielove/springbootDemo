@@ -5,6 +5,7 @@ import java.nio.charset.Charset;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.slf4j.MDC;
 import org.springframework.http.HttpInputMessage;
 import org.springframework.http.HttpOutputMessage;
 import org.springframework.http.MediaType;
@@ -16,15 +17,13 @@ import org.springframework.util.StreamUtils;
 import com.alibaba.fastjson.JSON;
 import com.cjj.exception.MyException;
 import com.cjj.message.base.BaseMessage;
-import com.cjj.message.base.BaseResMessage;
-import com.cjj.util.MpspLog;
 
 
 public class MyMessageConverter extends AbstractHttpMessageConverter<BaseMessage> {
 	
 	protected final Log log = LogFactory.getLog(this.getClass());
 	private static String CHARSET = "UTF-8";
-
+	private final static String RPID = "RPID";
 	public MyMessageConverter(){
         super(new MediaType("application", "json", Charset.forName(CHARSET)),new MediaType("text", "plain", Charset.forName(CHARSET)));
     }
@@ -54,7 +53,7 @@ public class MyMessageConverter extends AbstractHttpMessageConverter<BaseMessage
 			}
 			baseMsg.setSignFlag(true);
 		}
-		baseMsg.setRpid(System.currentTimeMillis() + "");
+		baseMsg.setRpid(MDC.get(RPID));
 		baseMsg.setStartTime(System.currentTimeMillis());
 		return baseMsg;
 	}
